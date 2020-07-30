@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: url("https://codehhr.gitee.io/pictures/desktop/work.jpg")
+    no-repeat;
+  background-size: cover;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: inherit;
+  filter: blur(10px);
+  z-index: -1;
+}
+.calendar {
+  position: relative;
+  width: 260px;
+  background-color: rgb(234, 246, 255);
+  text-align: center;
+  border-radius: 10px;
+  -webkit-box-reflect: below 1px
+    linear-gradient(transparent, transparent, rgb(29, 28, 28));
+  overflow: hidden;
+}
+
+.calendar #year {
+  position: relative;
+  font-size: 32px;
+  padding: 10px;
+  background-color: #ff6331;
+}
+
+.calendar #monthName {
+  margin: 20px 0;
+  font-size: 30px;
+  font-weight: 400;
+  color: rgb(126, 103, 103);
+}
+
+.calendar #dayNumber {
+  font-size: 80px;
+  font-weight: 800;
+  line-height: 100px;
+  color: rgb(68, 28, 28);
+}
+
+.calendar #week {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(126, 103, 103);
+}

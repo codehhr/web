@@ -1,0 +1,117 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  background-color: #494f5c;
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+ul {
+  width: 60vw;
+}
+
+li {
+  color: #d2dae2;
+  font-size: 28px;
+  list-style: none;
+  margin: 58px 0;
+  position: relative;
+}
+
+li::before,
+li::after {
+  position: absolute;
+  bottom: -32px;
+  content: "";
+  display: block;
+  height: 24px;
+  width: 100%;
+  background-color: #2f4a59;
+  border-radius: 12px;
+}
+
+li::before {
+  box-shadow: 0 0 6px rgba(75, 207, 250, 0.2);
+}
+
+li::after {
+  background-image: linear-gradient(90deg, #0fbcf9, #34e7e4);
+  animation-duration: 1.4s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+.python::after {
+  animation-name: python;
+}
+
+.java::after {
+  animation-name: java;
+}
+
+.js::after {
+  animation-name: js;
+}
+
+.go::after {
+  animation-name: go;
+}
+
+.c::after {
+  animation-name: c;
+}
+@keyframes python {
+  from {
+    width: 0;
+  }
+  to {
+    width: 90%;
+  }
+}
+
+@keyframes java {
+  from {
+    width: 0;
+  }
+  to {
+    width: 80%;
+  }
+}
+
+@keyframes js {
+  from {
+    width: 0;
+  }
+  to {
+    width: 70%;
+  }
+}
+
+@keyframes go {
+  from {
+    width: 0;
+  }
+  to {
+    width: 60%;
+  }
+}
+
+@keyframes c {
+  from {
+    width: 0;
+  }
+  to {
+    width: 50%;
+  }
+}

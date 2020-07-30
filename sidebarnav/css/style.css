@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+/* 侧边栏 */
+.sidebar {
+  position: fixed;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #747b85;
+  transition: 0.4s;
+}
+
+.sidebar header {
+  color: rgb(180, 224, 245);
+  text-align: center;
+  line-height: 70px;
+  font-size: 22px;
+  background: #7b8f99;
+  user-select: none;
+}
+
+.sidebar ul a {
+  display: block;
+  padding-left: 50px;
+  line-height: 70px;
+  border-top: 1px solid rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid black;
+  color: white;
+  transition: 0.4s;
+}
+
+.sidebar ul i {
+  padding-right: 16px;
+}
+
+.sidebar ul a:hover {
+  padding-left: 80px;
+}
+
+#check {
+  display: none;
+}
+
+label #btn,
+label #cancel {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+label #btn {
+  left: 40px;
+  top: 25px;
+  background-color: #6e777a;
+  color: white;
+  font-size: 28px;
+  padding: 3px 6px;
+  transition: 0.4s;
+}
+
+label #cancel {
+  z-index: 999;
+  left: -250px;
+  top: 17px;
+  font-size: 30px;
+  color: #8ebcd3;
+  background-color: #6e777a;
+  padding: 4px 9px;
+  transition: all 0.4s ease;
+}
+
+#check:checked ~ .sidebar {
+  left: 0;
+}
+
+#check:checked ~ label #cancel {
+  left: 200px;
+}
+
+section {
+  background: url('https://codehhr.gitee.io/pictures/desktop/work.jpg');
+  background-position: center;
+  height: 100vh;
+  background-size: cover;
+  transition: 0.4s;
+}
+
+#check:checked ~ section {
+  margin-left: 250px;
+}

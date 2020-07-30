@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  padding: 0;
+  font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
+  color: #404040;
+  background-image: url(../css/background.jpg);
+}
+
+.container {
+  margin: 280px auto;
+  width: 640px;
+}
+
+.login {
+  position: relative;
+  margin: 0 auto;
+  padding: 20px;
+  width: 310px;
+  height: 220px;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.login:before{
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+}
+
+.login h1 {
+  margin: -20px -20px 21px -20px;
+  line-height: 40px;
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+  text-shadow: 0 1px #dcdde1;
+  background: #f3f3f3;
+  border-bottom: 1px solid #cfcfcf;
+  border-radius: 4px 3px 0 0;
+  box-shadow: 0 1px rgb(245, 245, 245);
+}
+p{
+  text-align: center;
+}
+input {
+  font-family: 'Lucida Grande', Tahoma, Verdana, sans-serif;
+  font-size: 14px;
+}
+
+.login input[type=text], .login input[type=password] {
+  margin: 14px auto;
+  padding: 0 10px;
+  width: 278px;
+  height: 34px;
+  color: #404040;
+  background: white;
+  border: 1px solid;
+  border-color: #c4c4c4 #d1d1d1 #d4d4d4;
+  border-radius: 3px;
+  outline: 4px solid #eff4f7;
+}
+.login input[type=reset] {
+    height: 30px;
+    margin: 10px 4px 10px 160px;
+    border: none;
+    background: none;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  border-color: #7dc9e2;
+  outline-color: #dceefc;
+  outline-offset: 0;
+}
+
+input[type=submit] {
+  margin: 14px 0 10px 10px;
+  padding: 0 18px;
+  height: 29px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #527881;
+  text-shadow: 0 1px #e3f1f1;
+  background: #cde5ef;
+  border: 1px solid;
+  border-color: #b4ccce #b3c0c8 #9eb9c2;
+  border-radius: 16px;
+  outline: 0;
+  box-sizing: content-box;
+}
+
+input[type=reset]:hover{
+  transition: 0.25s;
+  background-color: #c8d6e5;
+  cursor: pointer;
+  border-radius: 4px;
+}
+input[type=submit]:hover {
+  color: #404040;
+  cursor: pointer;
+  transition: 0.25s;
+  background: #86beca; 
+}
