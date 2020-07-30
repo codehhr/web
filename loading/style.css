@@ -23,10 +23,10 @@ body {
 
 .boxbehind {
   position: absolute;
-  width: 128px;
-  height: 128px;
+  width: 110px;
+  height: 110px;
   background-color: #494f5c;
-  border: 4px solid rgb(212, 197, 129);
+  border: 4px solid rgb(238, 219, 156);
   transform: rotate(-45deg);
   animation: anticlockwise 6s ease-in-out infinite;
   z-index: -1;
@@ -35,9 +35,9 @@ body {
 .boxfront {
   text-align: center;
   float: left;
-  width: 128px;
-  height: 128px;
-  border: 4px solid rgb(108, 202, 240);
+  width: 110px;
+  height: 110px;
+  border: 4px solid rgb(114, 235, 229);
   background-color: #494f5c;
   /* transition: 4s; */
   animation: clockwise 6s ease-in-out infinite;
