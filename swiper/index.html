@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="swiperbox">
+      <ul class="swiper">
+        <li class="swiperitem showing" data-index="0"></li>
+        <li class="swiperitem" data-index="1"></li>
+        <li class="swiperitem" data-index="2"></li>
+        <li class="swiperitem" data-index="3"></li>
+        <li class="swiperitem" data-index="4"></li>
+      </ul>
+      <button class="goprevbtn"><</button>
+      <button class="gonextbtn">></button>
+      <ul class="swiperpoints">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script>
+      var swiperitems = document.querySelectorAll(".swiperitem");
+      var goprevbtn = document.querySelectorAll(".goprevbtn");
+      var gonextbtn = document.querySelectorAll(".gonextbtn");
+      var index = 0;
+      var showimg = function () {
+        for (let i of swiperitems) {
+          i.classList.remove("showing");
+        }
+        swiperitems[index].classList.add("showing");
+      };
+    </script>
+  </body>
+</html>
