@@ -20,4 +20,5 @@
 > 进度条: https://codehhr.gitee.io/web/progressbar/  
 > 樱花落: https://codehhr.gitee.io/web/sakuradrop/  
 > 可隐藏导航栏: https://codehhr.gitee.io/web/sidebarnav/  
+> 简单的轮播图: https://codehhr.gitee.io/web/swiper/
 > 记录旅行页面: https://codehhr.gitee.io/web/travel/
