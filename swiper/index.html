@@ -9,33 +9,72 @@
   <body>
     <div class="swiperbox">
       <ul class="swiper">
-        <li class="swiperitem showing" data-index="0"></li>
-        <li class="swiperitem" data-index="1"></li>
-        <li class="swiperitem" data-index="2"></li>
-        <li class="swiperitem" data-index="3"></li>
-        <li class="swiperitem" data-index="4"></li>
+        <li class="swiperitem showing"></li>
+        <li class="swiperitem"></li>
+        <li class="swiperitem"></li>
+        <li class="swiperitem"></li>
+        <li class="swiperitem"></li>
       </ul>
-      <button class="goprevbtn"><</button>
+      <button class="goprevbtn">
+        <
+      </button>
       <button class="gonextbtn">></button>
       <ul class="swiperpoints">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li class="point active" data-pointindex="0"></li>
+        <li class="point" data-pointindex="1"></li>
+        <li class="point" data-pointindex="2"></li>
+        <li class="point" data-pointindex="3"></li>
+        <li class="point" data-pointindex="4"></li>
       </ul>
     </div>
     <script>
-      var swiperitems = document.querySelectorAll(".swiperitem");
-      var goprevbtn = document.querySelectorAll(".goprevbtn");
-      var gonextbtn = document.querySelectorAll(".gonextbtn");
+      var swiperItems = document.querySelectorAll(".swiperitem");
+      var points = document.querySelectorAll(".point");
+      var goPrevBtn = document.querySelector(".goprevbtn");
+      var goNextBtn = document.querySelector(".gonextbtn");
       var index = 0;
-      var showimg = function () {
-        for (let i of swiperitems) {
+
+      points.forEach(function (point) {
+        point.addEventListener("click", () => {
+          index = point.dataset.pointindex;
+          show();
+        });
+      });
+
+      var show = function () {
+        for (let i of swiperItems) {
           i.classList.remove("showing");
         }
-        swiperitems[index].classList.add("showing");
+        swiperItems[index].classList.add("showing");
+        for (let t of points) {
+          t.classList.remove("active");
+        }
+        points[index].classList.add("active");
       };
+
+      function goPrev() {
+        if (index == 0) {
+          index = 4;
+        } else {
+          index--;
+        }
+        show();
+      }
+
+      function goNext() {
+        if (index == 4) {
+          index = 0;
+        } else {
+          index++;
+        }
+        show();
+      }
+      goPrevBtn.addEventListener("click", function () {
+        goPrev();
+      });
+      goNextBtn.addEventListener("click", function () {
+        goNext();
+      });
     </script>
   </body>
 </html>

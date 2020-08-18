@@ -6,13 +6,13 @@
 
 .swiperbox {
   position: relative;
-  margin: 0 auto;
+  margin: 100px auto;
   width: 960px;
   height: 540px;
+  overflow: hidden;
 }
 
 .swiper {
-  position: relative;
   width: 100%;
   height: 100%;
   list-style: none;
@@ -23,6 +23,8 @@
   width: 100%;
   height: 100%;
   background-size: cover;
+  opacity: 0.7;
+  transition: 1s;
 }
 
 .swiperitem:nth-child(1) {
@@ -32,10 +34,10 @@
   background-image: url("https://codehhr.gitee.io/pictures/desktop/leaf.jpg");
 }
 .swiperitem:nth-child(3) {
-  background-image: url("https://codehhr.gitee.io/pictures/desktop/lock.jpg");
+  background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597682184706&di=da73e421440a360533746dafc5ce6e37&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F-Po3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2F4610b912c8fcc3ce0060f8619145d688d43f203b.jpg");
 }
 .swiperitem:nth-child(4) {
-  background-image: url("https://codehhr.gitee.io/pictures/desktop/lady.jpg");
+  background-image: url("https://codehhr.gitee.io/pictures/desktop/ice.jpg");
 }
 .swiperitem:nth-child(5) {
   background-image: url("https://codehhr.gitee.io/pictures/desktop/space.jpg");
@@ -44,42 +46,74 @@
 .swiperpoints {
   position: absolute;
   display: flex;
-  width: 150px;
+  width: 200px;
   height: 10px;
   bottom: 46px;
   right: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transform: translate(-50%, -50%);
   list-style: none;
+  z-index: 100;
 }
 
-.swiperpoints li {
+.point {
   display: block;
-  width: 10px;
+  user-select: none;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   margin-right: 20px;
-  background-color: #ffffff;
+  background-color: #a6a6a79a;
+  outline: none;
+  transition: 0.4s;
+}
+
+.point:hover {
+  width: 20px;
+  height: 20px;
+  background-color: #ffffffd3;
 }
 
 .goprevbtn,
 .gonextbtn {
+  user-select: none;
   position: absolute;
   top: 50%;
-  width: 28px;
-  height: 100px;
+  width: 46px;
+  height: 100%;
   transform: translateY(-50%);
-  font-size: 20px;
+  font-size: 32px;
   font-weight: 900;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  background-color: transparent;
+  transition: 0.4s;
   z-index: 100;
 }
 
+.goprevbtn:hover,
+.gonextbtn:hover {
+  background-color: #82aaaa71;
+}
 .goprevbtn {
+  border-radius: 0 20px 20px 0;
   left: 0;
 }
 
 .gonextbtn {
+  border-radius: 10px 0 0 10px;
   right: 0;
 }
 
 .showing {
   z-index: 10;
+  opacity: 1;
+}
+.active {
+  width: 18px;
+  height: 18px;
+  background-color: #ffffff;
 }
