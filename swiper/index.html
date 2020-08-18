@@ -28,19 +28,21 @@
       </ul>
     </div>
     <script>
+      var swiper = document.querySelector(".swiper");
+      // 获取轮播每项
       var swiperItems = document.querySelectorAll(".swiperitem");
+      // 获取点
       var points = document.querySelectorAll(".point");
+      // 往上翻页按钮
       var goPrevBtn = document.querySelector(".goprevbtn");
+      // 往下翻页按钮
       var goNextBtn = document.querySelector(".gonextbtn");
+      // 索引
       var index = 0;
+      // 点击定时
+      var time;
 
-      points.forEach(function (point) {
-        point.addEventListener("click", () => {
-          index = point.dataset.pointindex;
-          show();
-        });
-      });
-
+      // 展示索引的图片
       var show = function () {
         for (let i of swiperItems) {
           i.classList.remove("showing");
@@ -51,7 +53,7 @@
         }
         points[index].classList.add("active");
       };
-
+      // 往上翻页
       function goPrev() {
         if (index == 0) {
           index = 4;
@@ -60,7 +62,7 @@
         }
         show();
       }
-
+      // 往下翻页
       function goNext() {
         if (index == 4) {
           index = 0;
@@ -69,12 +71,33 @@
         }
         show();
       }
+
+      // 给上下翻页按钮添加方法
       goPrevBtn.addEventListener("click", function () {
         goPrev();
+        time = 0;
       });
       goNextBtn.addEventListener("click", function () {
         goNext();
+        time = 0;
       });
+
+      // 每个点添加点击事件
+      points.forEach(function (point) {
+        point.addEventListener("click", () => {
+          index = point.dataset.pointindex;
+          show();
+          time = 0;
+        });
+      });
+
+      setInterval(function () {
+        time++;
+        if (time == 30) {
+          goNext();
+          time = 0;
+        }
+      }, 100);
     </script>
   </body>
 </html>
