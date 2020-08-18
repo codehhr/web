@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <title>Document</title>
+    <title>简单的轮播图</title>
   </head>
   <body>
     <div class="swiperbox">
@@ -91,13 +91,32 @@
         });
       });
 
-      setInterval(function () {
-        time++;
-        if (time == 30) {
-          goNext();
-          time = 0;
+      // 定时器
+      var interval = null;
+
+      // 默认轮播
+      start();
+      // 当鼠标移入清除定时器
+      swiper.onmouseover = function () {
+        clearInterval(interval);
+      };
+      // 当鼠标移出调用start()继续轮播
+      swiper.onmouseout = function () {
+        if (interval != null) {
+          clearInterval(interval);
         }
-      }, 100);
+        start();
+      };
+      // 2.5秒跳到下一张
+      function start() {
+        interval = setInterval(function () {
+          time++;
+          if (time == 25) {
+            goNext();
+            time = 0;
+          }
+        }, 100);
+      }
     </script>
   </body>
 </html>
