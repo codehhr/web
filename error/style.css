@@ -38,16 +38,15 @@ h1 {
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  transition: 1s;
 }
 
 .error-container > span:nth-child(1) {
   color: #d1f2a5;
-  animation: colordancing 2s infinite;
+  animation: colordancing 4s infinite;
 }
 .error-container > span:nth-child(3) {
   color: #f56991;
-  animation: colordancing2 2s infinite;
+  animation: colordancing2 4s infinite;
 }
 .error-container > span:nth-child(2) {
   width: 140px;
@@ -62,7 +61,7 @@ h1 {
   width: inherit;
   height: inherit;
   border-radius: 50%;
-  animation: shadowdancing 2s infinite;
+  animation: shadowdancing 4s infinite;
 }
 .error-container > span:nth-child(2):before {
   -webkit-transform: rotate(45deg);
