@@ -4,6 +4,7 @@
 
 ## 预览
 
+> 404页面: https://codehhr.gitee.io/web/error/
 > 方块游戏: https://codehhr.gitee.io/web/blockgame/  
 > 气泡特效: https://codehhr.gitee.io/web/bubbles/  
 > 简单日历: https://codehhr.gitee.io/web/calendar/  
