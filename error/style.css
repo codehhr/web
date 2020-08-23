@@ -10,16 +10,15 @@ body {
 .error {
   position: relative;
   top: 200px;
+  text-align: center;
   user-select: none;
 }
 h1 {
-  text-align: center;
   color: #a8d5eb;
   letter-spacing: 6px;
 }
 
 .text {
-  text-align: center;
   font-size: 28px;
   color: #93b3c4;
   font-weight: 600;
@@ -30,7 +29,6 @@ h1 {
   position: relative;
   top: -20px;
   font-family: Arial, sans-serif;
-  text-align: center;
   font-size: 240px;
   font-weight: 800;
 }
