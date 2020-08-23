@@ -9,7 +9,7 @@ body {
 }
 .error {
   position: relative;
-  top: 100px;
+  top: 200px;
   user-select: none;
 }
 h1 {
