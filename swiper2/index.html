@@ -22,5 +22,50 @@
         <label for="tagc"></label>
       </div>
     </ul>
+    <script>
+      var index = 0;
+      var interval = setInterval(function () {
+        start();
+      }, 2000);
+      function start() {
+        if (index == 3) {
+          index = 0;
+        }
+        if (index == 0) {
+          var taga = (document.querySelector("#taga").checked = true);
+        } else if (index == 1) {
+          var tagb = (document.querySelector("#tagb").checked = true);
+        } else if (index == 2) {
+          var tagc = (document.querySelector("#tagc").checked = true);
+        }
+        index++;
+      }
+
+      var overSwiper = document.querySelector(".swiperbox");
+      overSwiper.onmouseover = function () {
+        // console.log("over");
+        clearInterval(interval);
+      };
+      overSwiper.onmouseout = function () {
+        clearInterval(interval);
+
+        for (let timer = 0; timer <= 10; timer++) {
+          sleep(200);
+          if (timer == 10) {
+            interval = setInterval(function () {
+              start();
+            }, 2000);
+          }
+        }
+        function sleep(millisecond) {
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              resolve();
+            }, millisecond);
+          });
+        }
+        // console.log("out");
+      };
+    </script>
   </body>
 </html>
