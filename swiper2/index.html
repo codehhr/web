@@ -49,21 +49,9 @@
       overSwiper.onmouseout = function () {
         clearInterval(interval);
 
-        for (let timer = 0; timer <= 10; timer++) {
-          sleep(200);
-          if (timer == 10) {
-            interval = setInterval(function () {
-              start();
-            }, 2000);
-          }
-        }
-        function sleep(millisecond) {
-          return new Promise((resolve) => {
-            setTimeout(() => {
-              resolve();
-            }, millisecond);
-          });
-        }
+        interval = setInterval(function () {
+          start();
+        }, 2000);
         // console.log("out");
       };
     </script>
