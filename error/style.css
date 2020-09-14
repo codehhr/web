@@ -27,7 +27,6 @@ h1 {
 
 .error-container {
   position: relative;
-  top: -20px;
   font-family: Arial, sans-serif;
   font-size: 240px;
   font-weight: 800;
@@ -76,12 +75,12 @@ h1 {
 @media screen and (max-width: 600px) {
   .error-container {
     font-size: 120px;
-    top: 100px;
+    top: 10px;
     transition: all 1s;
   }
   .error-container > span:nth-child(2) {
-    width: 78px;
-    height: 78px;
+    width: 72px;
+    height: 72px;
   }
   .error-container > span:nth-child(2):before,
   .error-container > span:nth-child(2):after {
