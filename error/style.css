@@ -72,6 +72,30 @@ h1 {
   top: -9999em;
   left: -9999em;
 }
+
+@media screen and (max-width: 600px) {
+  .error-container {
+    font-size: 120px;
+    top: 100px;
+    transition: all 1s;
+  }
+  .error-container > span:nth-child(2) {
+    width: 78px;
+    height: 78px;
+  }
+  .error-container > span:nth-child(2):before,
+  .error-container > span:nth-child(2):after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    animation: shadowdancing2 4s infinite;
+  }
+}
+
 @keyframes shadowdancing {
   0% {
     box-shadow: inset 30px 0 0 rgba(209, 242, 165, 0.4),
@@ -102,6 +126,39 @@ h1 {
       inset 0 30px 0 rgba(239, 250, 180, 0.4),
       inset -30px 0 0 rgba(255, 196, 140, 0.4),
       inset 0 -30px 0 rgba(245, 105, 145, 0.4);
+  }
+}
+
+@keyframes shadowdancing2 {
+  0% {
+    box-shadow: inset 20px 0 0 rgba(209, 242, 165, 0.4),
+      inset 0 20px 0 rgba(239, 250, 180, 0.4),
+      inset -20px 0 0 rgba(255, 196, 140, 0.4),
+      inset 0 -20px 0 rgba(245, 105, 145, 0.4);
+  }
+  25% {
+    box-shadow: inset 20px 0 0 rgba(245, 105, 145, 0.4),
+      inset 0 20px 0 rgba(209, 242, 165, 0.4),
+      inset -20px 0 0 rgba(239, 250, 180, 0.4),
+      inset 0 -20px 0 rgba(255, 196, 140, 0.4);
+  }
+  50% {
+    box-shadow: inset 20px 0 0 rgba(255, 196, 140, 0.4),
+      inset 0 20px 0 rgba(245, 105, 145, 0.4),
+      inset -20px 0 0 rgba(209, 242, 165, 0.4),
+      inset 0 -20px 0 rgba(239, 250, 180, 0.4);
+  }
+  75% {
+    box-shadow: inset 20px 0 0 rgba(239, 250, 180, 0.4),
+      inset 0 20px 0 rgba(255, 196, 140, 0.4),
+      inset -20px 0 0 rgba(245, 105, 145, 0.4),
+      inset 0 -20px 0 rgba(209, 242, 165, 0.4);
+  }
+  100% {
+    box-shadow: inset 20px 0 0 rgba(209, 242, 165, 0.4),
+      inset 0 20px 0 rgba(239, 250, 180, 0.4),
+      inset -20px 0 0 rgba(255, 196, 140, 0.4),
+      inset 0 -20px 0 rgba(245, 105, 145, 0.4);
   }
 }
 @keyframes colordancing {
