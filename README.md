@@ -4,6 +4,7 @@
 
 ## 预览
 
+> 博客顶栏: https://codehhr.gitee.io/web/topbar/  
 > 404 页面: https://codehhr.gitee.io/web/error/
 > 方块游戏: https://codehhr.gitee.io/web/blockgame/
 > 气泡特效: https://codehhr.gitee.io/web/bubbles/
@@ -23,3 +24,5 @@
 > 简单的轮播图: https://codehhr.gitee.io/web/swiper/
 > 简单的轮播图 2: https://codehhr.gitee.io/web/swiper2/
 > 记录旅行页面: https://codehhr.gitee.io/web/trave/
+
+![a](https://codehhr.gitee.io/pictures/avatar/tusiji2.jpeg)
