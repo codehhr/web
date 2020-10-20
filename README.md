@@ -25,4 +25,4 @@
 > 简单的轮播图 2: https://codehhr.gitee.io/web/swiper2/  
 > 记录旅行页面: https://codehhr.gitee.io/web/trave/
 
-![a](https://codehhr.gitee.io/pictures/avatar/tusiji2.jpeg)
+![a](https://ae01.alicdn.com/kf/U2397830e8451446292cdcb2773617f0ap.jpg)
