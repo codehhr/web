@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      header {
+        height: 60px;
+        background: slategrey;
+      }
+      header .box,
+      .ToDoList {
+        width: 600px;
+        padding: 0 10px;
+        margin: 0 auto;
+      }
+      body {
+        background-color: darkgray;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+      }
+      label {
+        float: left;
+        width: 150px;
+        line-height: 60px;
+        color: rgb(10, 10, 10);
+        font-size: 20px;
+        cursor: auto;
+      }
+      header input {
+        float: right;
+        width: 70%;
+        height: 30px;
+        margin-top: 15px;
+        text-indent: 5px;
+        border-radius: 3px;
+        box-shadow: 0 1px 0 darkgray;
+        border: none;
+      }
+      input:focus {
+        outline-width: 0;
+      }
+      h2 {
+        position: relative;
+      }
+      span {
+        position: absolute;
+        top: 2px;
+        right: 5px;
+        /* 设置行内块 有宽高*/
+        display: inline-block;
+        padding: 0 5px;
+        height: 20px;
+        border-radius: 20px;
+        background: #e6e6fa;
+        line-height: 22px;
+        text-align: center;
+        color: #666;
+        font-size: 14px;
+      }
+      ol,
+      ul {
+        padding: 0;
+        list-style: none;
+      }
+      li {
+        height: 32px;
+        line-height: 32px;
+        background: #fff;
+        position: relative;
+        margin-bottom: 10px;
+        padding: 0 45px;
+        border-radius: 3px;
+        border-left: 5px solid #629a9c;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+      }
+      li input {
+        position: absolute;
+        top: 2px;
+        left: 10px;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+      }
+      p {
+        margin: 0;
+      }
+      li p input {
+        top: 3px;
+        left: 40px;
+        width: 70%;
+        height: 20px;
+        line-height: 14px;
+        text-indent: 5px;
+        font-size: 14px;
+      }
+      ul li {
+        border-left: 5px solid #999;
+        /*不透明度 0完全透明~1完全不透明*/
+        opacity: 0.5;
+      }
+      li a {
+        position: absolute;
+        top: 2px;
+        right: 5px;
+        display: inline-block;
+        width: 14px;
+        height: 12px;
+        border-radius: 14px;
+        border: 6px double #fff;
+        background: #ccc;
+        line-height: 14px;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      footer {
+        color: #666;
+        font-size: 14px;
+        text-align: center;
+      }
+      footer a {
+        text-decoration: bisque;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="box">
+        <form action="javascript:postaction()" id="form">
+          <!-- for将label标签绑定到input -->
+          <label for="title">ToDoList</label>
+          <!-- required规定提交表单之前有必填字段  autocomplete:自动补齐-->
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="添加ToDo"
+            required="required"
+            autocomplete="off"
+          />
+        </form>
+      </div>
+    </header>
+    <div class="ToDoList">
+      <h2 onclick="save()">正在进行 <span id="todocount"></span></h2>
+      <ol id="todolist" class="demo-box"></ol>
+      <h2>已经完成 <span id="donecount"></span></h2>
+      <ul id="donelist"></ul>
+    </div>
+    <footer>
+      <a href="javascript:clear();">清除内容</a>
+    </footer>
+    <script type="text/javascript">
+      function clear() {
+        localStorage.clear();
+        load();
+      }
+      function postaction() {
+        // 获取title节点
+        var title = document.getElementById("title");
+        if (title.value.trim() == "") {
+          alert("内容不能为空");
+        } else {
+          var data = loadData();
+          var todo = { title: title.value, done: false };
+          data.push(todo);
+          saveData(data);
+          var form = document.getElementById("form");
+          form.reset();
+          load();
+        }
+      }
+      function loadData() {
+        var collection = localStorage.getItem("todo");
+        if (collection != null) {
+          return JSON.parse(collection);
+        } else return [];
+      }
+      function saveSort() {
+        var todolist = document.getElementById("todolist");
+        var donelist = document.getElementById("donelist");
+        var ts = todolist.getElementsByTagName("p");
+        var ds = donelist.getElementsByTagName("p");
+        var data = [];
+        for (i = 0; i < ts.length; i++) {
+          var todo = { title: ts[i].innerHTML, done: false };
+          data.unshift(todo);
+        }
+        for (i = 0; i < ds.length; i++) {
+          var todo = { title: ds[i].innerHTML, done: true };
+          data.unshift(todo);
+        }
+        saveData(data);
+      }
+
+      function saveData(data) {
+        localStorage.setItem("todo", JSON.stringify(data));
+      }
+
+      function remove(i) {
+        var data = loadData();
+        var todo = data.splice(i, 1)[0];
+        saveData(data);
+        load();
+      }
+
+      function update(i, field, value) {
+        var data = loadData();
+        var todo = data.splice(i, 1)[0];
+        todo[field] = value;
+        data.splice(i, 0, todo);
+        saveData(data);
+        load();
+      }
+
+      function edit(i) {
+        load();
+        var p = document.getElementById("p-" + i);
+        title = p.innerHTML;
+        p.innerHTML = "<input id='input-" + i + "' value='" + title + "' />";
+        var input = document.getElementById("input-" + i);
+        input.setSelectionRange(0, input.value.length);
+        input.focus();
+        input.onblur = function () {
+          if (input.value.length == 0) {
+            p.innerHTML = title;
+            alert("内容不能为空");
+          } else {
+            update(i, "title", input.value);
+          }
+        };
+      }
+
+      function load() {
+        var todolist = document.getElementById("todolist");
+        var donelist = document.getElementById("donelist");
+        var collection = localStorage.getItem("todo");
+        if (collection != null) {
+          var data = JSON.parse(collection);
+          var todoCount = 0;
+          var doneCount = 0;
+          var todoString = "";
+          var doneString = "";
+          for (var i = data.length - 1; i >= 0; i--) {
+            if (data[i].done) {
+              doneString +=
+                "<li draggable='true'><input type='checkbox' onchange='update(" +
+                i +
+                ",\"done\",false)' checked='checked' />" +
+                "<p id='p-" +
+                i +
+                "' onclick='edit(" +
+                i +
+                ")'>" +
+                data[i].title +
+                "</p>" +
+                "<a href='javascript:remove(" +
+                i +
+                ")'>-</a></li>";
+              doneCount++;
+            } else {
+              todoString +=
+                "<li draggable='true'><input type='checkbox' onchange='update(" +
+                i +
+                ',"done",true)\' />' +
+                "<p id='p-" +
+                i +
+                "' onclick='edit(" +
+                i +
+                ")'>" +
+                data[i].title +
+                "</p>" +
+                "<a href='javascript:remove(" +
+                i +
+                ")'>-</a></li>";
+              todoCount++;
+            }
+          }
+          todocount.innerHTML = todoCount;
+          todolist.innerHTML = todoString;
+          donecount.innerHTML = doneCount;
+          donelist.innerHTML = doneString;
+        } else {
+          todocount.innerHTML = 0;
+          todolist.innerHTML = "";
+          donecount.innerHTML = 0;
+          donelist.innerHTML = "";
+        }
+      }
+
+      window.onload = load;
+    </script>
+  </body>
+</html>
