@@ -16,6 +16,7 @@
 > loading 加载动画: https://codehhr.gitee.io/web/loading/  
 > 登录页面: https://codehhr.gitee.io/web/login/  
 > 登录页面 2: https://codehhr.gitee.io/web/login2/  
+> 登录页面 3: https://codehhr.gitee.io/web/login3/  
 > 可折叠导航菜单: https://codehhr.gitee.io/web/nav/  
 > 粒子漩涡: https://codehhr.gitee.io/web/particlevortex/  
 > 进度条: https://codehhr.gitee.io/web/progressbar/  

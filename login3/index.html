@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>login</title>
+    <script src="https://codehhr.gitee.io/web/jquery.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- 注册 start -->
+      <div class="signup">
+        <form class="form" action="#">
+          <h2>注册</h2>
+          <!-- <div class="social"></div> -->
+          <input
+            type="text"
+            name="username"
+            id="signup-username"
+            placeholder="用户名"
+          />
+          <!-- <input type="email" name="email" id="email" placeholder="邮箱" /> -->
+          <input
+            type="password"
+            name="password"
+            id="signup-password"
+            placeholder="密码"
+          />
+          <button type="submit" class="signup-submit">注 册</button>
+        </form>
+      </div>
+      <!-- 注册 end -->
+
+      <!-- 登录 start -->
+      <div class="login">
+        <form class="form" action="#">
+          <h2>登录</h2>
+          <!-- <div class="social"></div> -->
+          <input
+            type="text"
+            name="username"
+            id="login-username"
+            placeholder="用户名"
+          />
+          <!-- <input type="email" name="email" id="email" placeholder="邮箱" /> -->
+          <input
+            type="password"
+            name="password"
+            id="login-password"
+            placeholder="密码"
+          />
+          <button type="submit" class="login-submit">登 录</button>
+        </form>
+      </div>
+      <!-- 登录 end -->
+
+      <!-- 遮罩 -->
+      <div class="mask">
+        <div class="innermask">
+          <!-- 覆盖左侧 -->
+          <div class="leftmask">
+            <h2>欢 迎 回 到 666</h2>
+            <p>加入我们</p>
+            <button class="loginmask-btn">登 录</button>
+          </div>
+
+          <!-- 覆盖右侧 -->
+          <div class="rightmask">
+            <h2>欢 迎 回 到 666</h2>
+            <p>加入我们</p>
+            <button class="signupmask-btn">注 册</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      $(function () {
+        var whereMask = "left";
+        function moveMask() {
+          if (whereMask == "left") {
+            $(".mask").css("transform", "translateX(100%)");
+            $(".innermask").css("transform", "translateX(-50%)");
+            whereMask = "right";
+          } else {
+            $(".mask").css("transform", "translateX(0)");
+            $(".innermask").css("transform", "translateX(0)");
+            whereMask = "left";
+          }
+        }
+        $(".mask button").click(function () {
+          moveMask();
+        });
+      });
+    </script>
+  </body>
+</html>
