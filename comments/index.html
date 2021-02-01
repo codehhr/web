@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>评论</title>
+    <script src="https://codehhr.gitee.io/web/vue.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #app {
+        position: relative;
+        top: 200px;
+        width: 600px;
+        height: auto;
+        border: none;
+        box-shadow: 0 -2px 2px #b9bfc0, 2px 0 2px #b9bfc0, 0 2px 2px #b9bfc0,
+          -2px 0 2px #b9bfc0;
+        margin: 0 auto;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .commentsInput {
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .commentsInput .input {
+        width: 500px;
+        height: inherit;
+        border: none;
+        outline: none;
+        padding: 0 10px;
+        font-size: 20px;
+      }
+      .commentsInput .input:focus {
+        border: inset 1px solid #0094ff;
+      }
+      .commentsInput .submit {
+        width: 100px;
+        height: inherit;
+        border: none;
+        outline: none;
+        background-color: #49b1f5;
+        transition: all 0.3s;
+      }
+      .commentsInput .submit:hover {
+        cursor: pointer;
+        background-color: #ffbd9e;
+      }
+      .comment {
+        width: 100%;
+        height: 48px;
+        border-bottom: 1px solid #79b1ae;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+      }
+      .comment:first-child {
+        border-top: 1px solid #79b1ae;
+      }
+      .comment:last-child {
+        border-bottom: none;
+      }
+      .comment svg {
+        color: #808080;
+        transition: all 0.3s;
+      }
+      .comment svg:hover {
+        color: #649aff;
+        background-color: #e2e2e2;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 评论输入框和提交按钮 start -->
+      <div class="commentsInput">
+        <!-- 评论输入框 -->
+        <input
+          type="text"
+          class="input"
+          v-model="inputValue"
+          @keyup.enter="addComment"
+        />
+        <!-- 提交按钮 -->
+        <input
+          type="button"
+          title="Enter"
+          class="submit"
+          value="提交"
+          @click="addComment"
+        />
+      </div>
+      <!-- 评论输入框和提交按钮 end -->
+
+      <!-- 评论列表 start-->
+      <div class="commentsList">
+        <div class="comment" v-for="(comment,index) in commentsList">
+          <!-- 评论列表内容 -->
+          <span>{{comment}}</span>
+          <!-- 删除按钮 -->
+          <div class="delte" @click="delteComment(index)">
+            <svg
+              fill="currentColor"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              width="28"
+              height="28"
+            >
+              <path
+                d="M758.627 265.373c12.372 12.371 12.496 32.353 0.372 44.877l-0.372 0.377L557.255 512l201.372 201.373c12.497 12.496 12.497 32.758 0 45.254-12.371 12.372-32.353 12.496-44.877 0.372l-0.377-0.372L512 557.255 310.627 758.627c-12.496 12.497-32.758 12.497-45.254 0C253 746.256 252.877 726.274 265 713.75l0.372-0.377L466.745 512 265.373 310.627c-12.497-12.496-12.497-32.758 0-45.254C277.744 253 297.726 252.877 310.25 265l0.377 0.372L512 466.745l201.373-201.372c12.496-12.497 32.758-12.497 45.254 0z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <!-- 评论列表 end-->
+    </div>
+    <script>
+      var vm = new Vue({
+        el: "#app",
+        data: {
+          inputValue: "",
+          commentsList: ["1231", "hvksfh"],
+        },
+        methods: {
+          addComment() {
+            if (this.inputValue == "") {
+              alert("请填入内容");
+            } else {
+              this.commentsList.unshift(this.inputValue);
+              this.inputValue = "";
+            }
+          },
+          delteComment(index) {
+            this.commentsList.splice(index, 1);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

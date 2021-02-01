@@ -20,6 +20,7 @@
 > 可折叠导航菜单: https://codehhr.gitee.io/web/nav/  
 > 粒子漩涡: https://codehhr.gitee.io/web/particlevortex/  
 > 进度条: https://codehhr.gitee.io/web/progressbar/  
+> 表白: https://codehhr.gitee.io/web/love/  
 > 樱花落: https://codehhr.gitee.io/web/sakuradrop/  
 > 可隐藏导航栏: https://codehhr.gitee.io/web/sidebarnav/  
 > 简单的轮播图: https://codehhr.gitee.io/web/swiper/  
