@@ -4,6 +4,7 @@
 
 ## 预览
 
+> 烟花: https://codehhr.gitee.io/web/firework/  
 > 提交评论: https://codehhr.gitee.io/web/comments/  
 > TodoList: https://codehhr.gitee.io/web/todolist/  
 > 404 页面: https://codehhr.gitee.io/web/error/  
