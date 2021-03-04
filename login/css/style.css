@@ -82,3 +82,7 @@ input.btn:hover {
   opacity: 0.9;
   width: 62%;
 }
+
+.reset {
+  outline: none;
+}
