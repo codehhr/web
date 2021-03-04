@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -91,7 +92,11 @@ button:hover {
 }
 
 .form input:nth-of-type(2) {
-  margin-bottom: 32px;
+  margin-bottom: 20px;
+}
+
+.form button {
+  margin-top: 20px;
 }
 
 .form input:focus {
