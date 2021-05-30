@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #494f5c;
+      }
+      ul {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        width: 760px;
+        height: 200px;
+      }
+      ul:hover {
+        cursor: pointer;
+      }
+      li {
+        position: absolute;
+        transition: all 0.4s;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="ul"></ul>
+  </body>
+
+  <script>
+    window.onload = function () {
+      let timer = setInterval(next, 2000);
+      let liList = [];
+      let liListdiv = [];
+      var ul = document.getElementById("ul");
+
+      // #ul > li > img[src]
+      for (let i = 1; i <= 4; i++) {
+        var li = document.createElement("li");
+        var img = document.createElement("img");
+
+        img.src = "images/deer" + i + ".jpg";
+        img.style.width = "400px";
+        img.style.height = "200px";
+        li.appendChild(img);
+        ul.appendChild(li);
+
+        // 鼠标移入停止轮播
+        li.onmouseenter = function () {
+          clearInterval(timer);
+        };
+        // 鼠标移出开始轮播
+        li.onmouseleave = function () {
+          timer = setInterval(next, 2000);
+        };
+
+        liList.push(li);
+      }
+
+      // 左图标
+      let prevImg = document.createElement("img");
+      prevImg.src = "./images/prev.png";
+      prevImg.style.position = "absolute";
+      prevImg.style.left = "-40px";
+      prevImg.style.top = "50%";
+      prevImg.style.transform = "translateY(-50%)";
+      ul.appendChild(prevImg);
+
+      // 右图标
+      let nextImg = document.createElement("img");
+      nextImg.src = "./images/next.png";
+      nextImg.style.position = "absolute";
+      nextImg.style.right = "-40px";
+      nextImg.style.top = "50%";
+      nextImg.style.transform = "translateY(-50%)";
+      ul.appendChild(nextImg);
+
+      // 点击->上一个
+      prevImg.onclick = function () {
+        clearInterval(timer);
+        prev();
+        timer = setInterval(next, 2000);
+      };
+
+      // 点击->下一个
+      nextImg.onclick = function () {
+        clearInterval(timer);
+        next();
+        timer = setInterval(next, 2000);
+      };
+
+      // 初始化后数组的后三张图片的位置
+      initImgArrPosition();
+
+      // 上一个
+      function prev() {
+        liList.unshift(liList.pop());
+        for (let i = 0; i < liList.length; i++) {
+          liList[i].style.zIndex = i;
+          liList[i].style.transform = "scale(1)";
+        }
+        initImgArrPosition();
+      }
+
+      // 下一个
+      function next() {
+        liList.push(liList.shift());
+        for (let i = 0; i < liList.length; i++) {
+          liList[i].style.zIndex = i;
+          liList[i].style.transform = "scale(1)";
+        }
+        initImgArrPosition();
+      }
+
+      // 初始化后数组的后三张图片的位置
+      function initImgArrPosition() {
+        liList[liList.length - 3].style.left = "0px";
+        liList[liList.length - 2].style.zIndex = 100;
+        liList[liList.length - 2].style.left = "200px";
+        liList[liList.length - 2].style.transform = "scale(1.3)";
+        liList[liList.length - 1].style.left = "400px";
+      }
+    };
+  </script>
+</html>
