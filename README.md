@@ -26,7 +26,6 @@
 > 樱花落: https://codehhr.github.io/web/sakuradrop/  
 > 可隐藏导航栏: https://codehhr.github.io/web/sidebarnav/  
 > 简单的轮播图: https://codehhr.github.io/web/swiper/  
-> 简单的轮播图 2: https://codehhr.github.io/web/swiper2/  
-> 记录旅行页面: https://codehhr.github.io/web/trave/
+> 简单的轮播图 2: https://codehhr.github.io/web/swiper2/
 
 ![a](https://codehhr.coding.net/p/codehhr/d/images/git/raw/master/avatar/tusiji2.jpeg)
