@@ -479,10 +479,20 @@ body {
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: 100% 6px;
-  background-image: linear-gradient(transparent, transparent 5px, #b9babc 5px, #b9babc);
+  background-image: linear-gradient(
+    transparent,
+    transparent 5px,
+    #b9babc 5px,
+    #b9babc
+  );
 }
 .content a:hover {
-  background-image: linear-gradient(transparent, transparent 4px, #d41c46 4px, #d41c46);
+  background-image: linear-gradient(
+    transparent,
+    transparent 4px,
+    #d41c46 4px,
+    #d41c46
+  );
 }
 .content a.icon {
   background: none;
@@ -511,7 +521,12 @@ body {
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: 100% 6px;
-  background-image: linear-gradient(transparent, transparent 6px, #d41c46 6px, #d41c46);
+  background-image: linear-gradient(
+    transparent,
+    transparent 6px,
+    #d41c46 6px,
+    #d41c46
+  );
 }
 @media (min-width: 540px) {
   .image-wrap {
@@ -601,7 +616,12 @@ body {
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: 100% 6px;
-  background-image: linear-gradient(transparent, transparent 5px, #5bac4a 5px, #5bac4a);
+  background-image: linear-gradient(
+    transparent,
+    transparent 5px,
+    #5bac4a 5px,
+    #5bac4a
+  );
 }
 #header #nav ul li {
   display: inline-block;
@@ -734,7 +754,12 @@ body {
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: 100% 6px;
-  background-image: linear-gradient(transparent, transparent 5px, #5bac4a 5px, #5bac4a);
+  background-image: linear-gradient(
+    transparent,
+    transparent 5px,
+    #5bac4a 5px,
+    #5bac4a
+  );
 }
 #header-post #nav ul li {
   border-right: 1px dotted #5bac4a;
@@ -880,7 +905,12 @@ body {
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: 100% 6px;
-  background-image: linear-gradient(transparent, transparent 5px, #5bac4a 5px, #5bac4a);
+  background-image: linear-gradient(
+    transparent,
+    transparent 5px,
+    #5bac4a 5px,
+    #5bac4a
+  );
 }
 #footer-post #nav-footer ul {
   list-style-type: none;
@@ -1092,7 +1122,7 @@ article .content blockquote {
   border-left: 0px solid #ccc;
   margin: 1rem 10px;
   padding: 0.5em 10px;
-  quotes: "\201C" "\201D" "\2018" "\2019";
+  quotes: "\201C""\201D""\2018""\2019";
 }
 article .content blockquote p {
   margin: 0;
@@ -1112,11 +1142,21 @@ article .content blockquote footer {
 }
 article .content blockquote footer a {
   color: #666;
-  background-image: linear-gradient(transparent, transparent 5px, #666 5px, #666);
+  background-image: linear-gradient(
+    transparent,
+    transparent 5px,
+    #666 5px,
+    #666
+  );
 }
 article .content blockquote footer a:hover {
   color: #999;
-  background-image: linear-gradient(transparent, transparent 4px, #999 4px, #999);
+  background-image: linear-gradient(
+    transparent,
+    transparent 4px,
+    #999 4px,
+    #999
+  );
 }
 article .content blockquote footer cite:before {
   content: "—";
@@ -2149,7 +2189,8 @@ pre code {
   float: right;
 }
 .highlight figcaption:before,
-.highlight figcaption content: "" {
+.highlight figcaption {
+  content: "";
   display: table;
 }
 .highlight figcaption:after {

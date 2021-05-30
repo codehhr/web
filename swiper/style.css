@@ -28,51 +28,47 @@
 }
 
 .swiperitem:nth-child(1) {
-  background-image: url("https://codehhr.gitee.io/pictures/desktop/work.jpg");
+  background-image: url("https://codehhr.coding.net/p/codehhr/d/wallpaper/git/raw/master/work.jpg");
 }
 .swiperitem:nth-child(2) {
-  background-image: url("https://codehhr.gitee.io/pictures/desktop/leaf.jpg");
+  background-image: url("https://codehhr.coding.net/p/codehhr/d/wallpaper/git/raw/master/leaf.jpg");
 }
 .swiperitem:nth-child(3) {
-  background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1597682184706&di=da73e421440a360533746dafc5ce6e37&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F-Po3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2F4610b912c8fcc3ce0060f8619145d688d43f203b.jpg");
+  background-image: url("https://codehhr.coding.net/p/codehhr/d/wallpaper/git/raw/master/work.jpg");
 }
 .swiperitem:nth-child(4) {
-  background-image: url("https://codehhr.gitee.io/pictures/desktop/ice.jpg");
+  background-image: url("https://codehhr.coding.net/p/codehhr/d/wallpaper/git/raw/master/ice.jpg");
 }
 .swiperitem:nth-child(5) {
-  background-image: url("https://codehhr.gitee.io/pictures/desktop/space.jpg");
+  background-image: url("https://codehhr.coding.net/p/codehhr/d/wallpaper/git/raw/master/space.jpg");
 }
 
 .swiperpoints {
   position: absolute;
-  display: flex;
+  left: 140px;
+  bottom: 46px;
+  transform: translate(-50%, -50%);
   width: 200px;
   height: 10px;
-  bottom: 46px;
-  right: 40px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  transform: translate(-50%, -50%);
+  justify-content: space-around;
   list-style: none;
   z-index: 100;
 }
 
 .point {
-  display: block;
   user-select: none;
-  width: 14px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  margin-right: 20px;
-  background-color: #a6a6a79a;
+  border: 1px solid #ffffff;
+  background-color: #a6a6a766;
   outline: none;
   transition: 0.4s;
 }
 
 .point:hover {
-  width: 20px;
-  height: 20px;
   background-color: #ffffffd3;
 }
 
