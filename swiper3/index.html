@@ -6,125 +6,236 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      body {
-        background-color: #494f5c;
+      /* 轮播图 start */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
-      ul {
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+      .swiper {
+        position: relative;
+        margin: 100px auto;
+        width: 1000px;
+        height: 520px;
+      }
+      .swiper-ul {
         list-style: none;
-        width: 760px;
-        height: 200px;
+        position: relative;
+        width: inherit;
+        height: inherit;
+        overflow: hidden;
       }
-      ul:hover {
+      .swiper-ul li {
+        list-style: none;
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        transition: all 1s ease-in-out;
+      }
+      .swiper-ul li img {
+        width: inherit;
+        height: inherit;
+      }
+      .swiper-nav {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: inherit;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+      }
+      .swiper-nav > div {
+        margin: 0 20px;
+        width: 80px;
+        height: 10px;
+        background-color: #e6e6e64d;
+        cursor: pointer;
+        transition: all 0.5s;
+      }
+      .swiper-nav > div:hover {
+        background-color: #e6e6e6bb;
+      }
+      .prev,
+      .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
         cursor: pointer;
       }
-      li {
-        position: absolute;
-        transition: all 0.4s;
+      .prev {
+        left: 10px;
+        z-index: 10;
       }
+      .next {
+        right: 10px;
+        z-index: 10;
+      }
+
+      /* 轮播图 end */
     </style>
   </head>
   <body>
-    <ul id="ul"></ul>
-  </body>
+    <!-- 结构
+      div.swiper 
+          img.prev
+            ul.swiper-ul > li > img[src] 
+          img.next
+    -->
 
-  <script>
-    window.onload = function () {
-      let timer = setInterval(next, 2000);
-      let liList = [];
-      let liListdiv = [];
-      var ul = document.getElementById("ul");
+    <!-- 轮播图 start -->
+    <div class="swiper">
+      <img
+        class="prev"
+        src="https://codehhr.coding.net/p/codehhr/d/images/git/raw/master/prevnext/prev.png"
+        alt=""
+      />
+      <ul class="swiper-ul">
+        <li>
+          <img
+            src="https://codehhr.coding.net/p/codehhr/d/wallpaper/git/raw/master/deer.jpg"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            src="https://codehhr.coding.net/p/codehhr/d/wallpaper/git/raw/master/deer1.jpg"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            src="https://codehhr.coding.net/p/codehhr/d/wallpaper/git/raw/master/deer2.jpg"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            src="https://codehhr.coding.net/p/codehhr/d/wallpaper/git/raw/master/deer3.jpg"
+            alt=""
+          />
+        </li>
+      </ul>
+      <img
+        class="next"
+        src="https://codehhr.coding.net/p/codehhr/d/images/git/raw/master/prevnext/next.png"
+        alt=""
+      />
+      <div class="swiper-nav"></div>
+    </div>
+    <!-- 轮播图 end -->
 
-      // #ul > li > img[src]
-      for (let i = 1; i <= 4; i++) {
-        var li = document.createElement("li");
-        var img = document.createElement("img");
+    <script>
+      function swiper() {
+        let width = document.querySelector(".swiper-ul li").offsetWidth; // offsetWidth
+        let liIndex = 0;
+        let ul = document.querySelector(".swiper-ul"); // ul tag
+        let liNodeList = document.querySelectorAll(".swiper-ul li"); // li nodes
+        let liList = []; // li tags
 
-        img.src = "images/deer" + i + ".jpg";
-        img.style.width = "400px";
-        img.style.height = "200px";
-        li.appendChild(img);
-        ul.appendChild(li);
+        // checkIndex(); // 索引从 0 开始
+        let timer = setInterval(function () {
+          next();
+        }, 4000); // 开局先启动定时器
 
-        // 鼠标移入停止轮播
-        li.onmouseenter = function () {
+        // 鼠标移入 swiper 清除定时器
+        document.querySelector(".swiper").onmouseenter = function () {
           clearInterval(timer);
         };
-        // 鼠标移出开始轮播
-        li.onmouseleave = function () {
-          timer = setInterval(next, 2000);
+        // 鼠标移出 swiper 开启定时器
+        document.querySelector(".swiper").onmouseleave = function () {
+          timer = setInterval(next, 4000);
         };
 
-        liList.push(li);
-      }
+        // 把每个 li 放到 liList 数组里
+        liNodeList.forEach(function (value, index) {
+          liList.push(value);
+          createSwiperNav(index); // 创建轮播图导航
+        });
 
-      // 左图标
-      let prevImg = document.createElement("img");
-      prevImg.src = "./images/prev.png";
-      prevImg.style.position = "absolute";
-      prevImg.style.left = "-40px";
-      prevImg.style.top = "50%";
-      prevImg.style.transform = "translateY(-50%)";
-      ul.appendChild(prevImg);
-
-      // 右图标
-      let nextImg = document.createElement("img");
-      nextImg.src = "./images/next.png";
-      nextImg.style.position = "absolute";
-      nextImg.style.right = "-40px";
-      nextImg.style.top = "50%";
-      nextImg.style.transform = "translateY(-50%)";
-      ul.appendChild(nextImg);
-
-      // 点击->上一个
-      prevImg.onclick = function () {
-        clearInterval(timer);
-        prev();
-        timer = setInterval(next, 2000);
-      };
-
-      // 点击->下一个
-      nextImg.onclick = function () {
-        clearInterval(timer);
-        next();
-        timer = setInterval(next, 2000);
-      };
-
-      // 初始化后数组的后三张图片的位置
-      initImgArrPosition();
-
-      // 上一个
-      function prev() {
-        liList.unshift(liList.pop());
-        for (let i = 0; i < liList.length; i++) {
-          liList[i].style.zIndex = i;
-          liList[i].style.transform = "scale(1)";
+        // 创建轮播图导航
+        function createSwiperNav(navIndex) {
+          let div = document.createElement("div");
+          div.addEventListener("click", function () {
+            console.log(liIndex, navIndex);
+          });
+          document.querySelector(".swiper-nav").appendChild(div);
         }
-        initImgArrPosition();
-      }
 
-      // 下一个
-      function next() {
-        liList.push(liList.shift());
-        for (let i = 0; i < liList.length; i++) {
-          liList[i].style.zIndex = i;
-          liList[i].style.transform = "scale(1)";
+        let prevImg = document.querySelector(".prev"); // 上一张图的指示箭头
+        let nextImg = document.querySelector(".next"); // 下一张图的指示箭头
+        // 点击->上一个
+        prevImg.onclick = function () {
+          clearInterval(timer);
+          prev();
+        };
+
+        // 点击->下一个
+        nextImg.onclick = function () {
+          clearInterval(timer);
+          next();
+        };
+
+        // 初始化后数组的后三张图片的位置
+        initImgArrPosition();
+
+        // 上一个
+        function prev() {
+          liList.unshift(liList.pop());
+          for (let i = 0; i < liList.length; i++) {
+            liList[i].style.zIndex = i;
+          }
+          checkIndex(0);
+          initImgArrPosition();
         }
-        initImgArrPosition();
-      }
 
-      // 初始化后数组的后三张图片的位置
-      function initImgArrPosition() {
-        liList[liList.length - 4].style.left = "200px";
-        liList[liList.length - 3].style.left = "0px";
-        liList[liList.length - 2].style.zIndex = 100;
-        liList[liList.length - 2].style.left = "200px";
-        liList[liList.length - 2].style.transform = "scale(1.3)";
-        liList[liList.length - 1].style.left = "400px";
+        // 下一个
+        function next() {
+          liList.push(liList.shift());
+          for (let i = 0; i < liList.length; i++) {
+            liList[i].style.zIndex = i;
+          }
+          checkIndex(1);
+          initImgArrPosition();
+        }
+
+        // 拿到当前图片(li)索引
+        function checkIndex(name) {
+          // if (liIndex == liNodeList.length - 1) {
+          //   liIndex = 0;
+          // } else if (name == 1) {
+          //   liIndex++;
+          // } else {
+          //   if (liIndex <= 0) {
+          //     liIndex = liNodeList.length - 1;
+          //   } else {
+          //     liIndex--;
+          //   }
+          // }
+          if (name == 1) {
+            // 走 next()
+            if (liIndex == liNodeList.length - 1) {
+              liIndex = liNodeList.length - 1;
+            }
+          } else {
+            // 走 prev()
+          }
+        }
+
+        // 初始化后数组的后三张图片的位置
+        function initImgArrPosition() {
+          liList[liList.length - 4].style.left = `${2 * width}px`;
+          liList[liList.length - 4].style.zIndex = "-1";
+          liList[liList.length - 3].style.left = `-${width}px`;
+          liList[liList.length - 2].style.left = "0";
+          liList[liList.length - 1].style.left = `${width}px`;
+        }
       }
-    };
-  </script>
+      swiper();
+    </script>
+  </body>
 </html>
