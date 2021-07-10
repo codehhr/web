@@ -12,29 +12,34 @@
         padding: 0;
         box-sizing: border-box;
       }
+      body {
+        background-color: #494f5c;
+      }
       .swiper {
         position: relative;
-        margin: 100px auto;
-        width: 1000px;
-        height: 520px;
+        margin: 200px auto;
+        width: 1200px;
+        height: 220px;
+        /* overflow: hidden; */
       }
       .swiper-ul {
         list-style: none;
         position: relative;
-        width: inherit;
+        margin: 0 auto;
+        width: 400px;
         height: inherit;
-        overflow: hidden;
       }
       .swiper-ul li {
         list-style: none;
         position: absolute;
         width: inherit;
         height: inherit;
-        transition: all 1s ease-in-out;
+        transition: all 0.6s ease-in-out;
       }
       .swiper-ul li img {
-        width: inherit;
-        height: inherit;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
       }
       .swiper-nav {
         position: absolute;
@@ -55,7 +60,7 @@
         height: 10px;
         background-color: #e6e6e64d;
         cursor: pointer;
-        transition: all 0.5s;
+        transition: all 2s ease-in-out;
       }
       .swiper-nav > div:hover {
         background-color: #e6e6e6bb;
@@ -131,16 +136,16 @@
 
     <script>
       function swiper() {
-        let width = document.querySelector(".swiper-ul li").offsetWidth; // offsetWidth
+        let width = document.querySelector(".swiper-ul li").clientWidth; // offsetWidth
         let liIndex = 0;
         let ul = document.querySelector(".swiper-ul"); // ul tag
-        let liNodeList = document.querySelectorAll(".swiper-ul li"); // li nodes
-        let liList = []; // li tags
+        let liNodeList = document.querySelectorAll(".swiper-ul li"); // li node list
+        let liList = []; // li tag list
 
-        // checkIndex(); // 索引从 0 开始
+        // 开局先启动定时器
         let timer = setInterval(function () {
           next();
-        }, 4000); // 开局先启动定时器
+        }, 4000);
 
         // 鼠标移入 swiper 清除定时器
         document.querySelector(".swiper").onmouseenter = function () {
@@ -154,17 +159,7 @@
         // 把每个 li 放到 liList 数组里
         liNodeList.forEach(function (value, index) {
           liList.push(value);
-          createSwiperNav(index); // 创建轮播图导航
         });
-
-        // 创建轮播图导航
-        function createSwiperNav(navIndex) {
-          let div = document.createElement("div");
-          div.addEventListener("click", function () {
-            console.log(liIndex, navIndex);
-          });
-          document.querySelector(".swiper-nav").appendChild(div);
-        }
 
         let prevImg = document.querySelector(".prev"); // 上一张图的指示箭头
         let nextImg = document.querySelector(".next"); // 下一张图的指示箭头
@@ -188,8 +183,8 @@
           liList.unshift(liList.pop());
           for (let i = 0; i < liList.length; i++) {
             liList[i].style.zIndex = i;
+            liList[i].style.transform = "scale(1.0)";
           }
-          checkIndex(0);
           initImgArrPosition();
         }
 
@@ -198,40 +193,20 @@
           liList.push(liList.shift());
           for (let i = 0; i < liList.length; i++) {
             liList[i].style.zIndex = i;
+            liList[i].style.transform = "scale(1.0)";
           }
-          checkIndex(1);
           initImgArrPosition();
-        }
-
-        // 拿到当前图片(li)索引
-        function checkIndex(name) {
-          // if (liIndex == liNodeList.length - 1) {
-          //   liIndex = 0;
-          // } else if (name == 1) {
-          //   liIndex++;
-          // } else {
-          //   if (liIndex <= 0) {
-          //     liIndex = liNodeList.length - 1;
-          //   } else {
-          //     liIndex--;
-          //   }
-          // }
-          if (name == 1) {
-            // 走 next()
-            if (liIndex == liNodeList.length - 1) {
-              liIndex = liNodeList.length - 1;
-            }
-          } else {
-            // 走 prev()
-          }
         }
 
         // 初始化后数组的后三张图片的位置
         function initImgArrPosition() {
-          liList[liList.length - 4].style.left = `${2 * width}px`;
+          liList[liList.length - 4].style.left = `0`;
+          liList[liList.length - 2].style.transform = "scale(0.8)";
           liList[liList.length - 4].style.zIndex = "-1";
           liList[liList.length - 3].style.left = `-${width}px`;
           liList[liList.length - 2].style.left = "0";
+          liList[liList.length - 2].style.transform = "scale(1.2)";
+          liList[liList.length - 2].style.zIndex = "9";
           liList[liList.length - 1].style.left = `${width}px`;
         }
       }

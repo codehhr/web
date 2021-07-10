@@ -4,6 +4,7 @@
 
 ## 预览
 
+> 背景渐变: https://codehhr.github.io/web/gradient/  
 > 烟花: https://codehhr.github.io/web/firework/  
 > 提交评论: https://codehhr.github.io/web/comments/  
 > TodoList: https://codehhr.github.io/web/todolist/  
