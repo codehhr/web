@@ -28,6 +28,6 @@
 > 可隐藏导航栏: https://codehhr.github.io/web/sidebarnav/  
 > 轮播图 1: https://codehhr.github.io/web/swiper/  
 > 轮播图 2: https://codehhr.github.io/web/swiper2/  
-> 轮播图 3: https://codehhr.github.io/web/swiper3/
+> 仿网易云轮播图: https://codehhr.github.io/web/swiper3/
 
 ![a](https://codehhr.coding.net/p/codehhr/d/images/git/raw/master/avatar/tusiji2.jpeg)
