@@ -164,16 +164,16 @@
         let prevImg = document.querySelector(".prev"); // 上一张图的指示箭头
         let nextImg = document.querySelector(".next"); // 下一张图的指示箭头
         // 点击->上一个
-        prevImg.onclick = function () {
+        prevImg.addEventListener("click", function () {
           clearInterval(timer);
           prev();
-        };
+        });
 
         // 点击->下一个
-        nextImg.onclick = function () {
+        nextImg.addEventListener("click", function () {
           clearInterval(timer);
           next();
-        };
+        });
 
         // 初始化后数组的后三张图片的位置
         initImgArrPosition();
