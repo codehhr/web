@@ -13,8 +13,8 @@
 > 方块游戏: https://codehhr.github.io/web/blockgame/  
 > 气泡特效: https://codehhr.github.io/web/bubbles/  
 > 简单日历: https://codehhr.github.io/web/calendar/  
-> 彩色小球倒计时: https://codehhr.github.io/web/countdown/  
-> 流动的文字: https://codehhr.github.io/web/flowingtext/  
+> 跳动的彩色小球倒计时: https://codehhr.github.io/web/colorballtimeeffect  
+> 流动的文字加载特效: https://codehhr.github.io/web/flowingtext/  
 > 输入动画: https://codehhr.github.io/web/inputanimation/  
 > 原生 JS 实现拖拽: https://codehhr.github.io/web/jsdrag/  
 > loading 加载动画: https://codehhr.github.io/web/loading/  
