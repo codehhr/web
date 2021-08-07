@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北极光之夜。</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(0, 0, 0);
+        }
+       
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        ctx.font = "30px fangsong";
+        ctx.fillStyle = "rgb(0, 0, 0)";
+        ctx.fillText("亿个人的论坛。",0,30,180); 
+        var pix = ctx.getImageData(0,0,180,35);
+        window.addEventListener('resize',canvasResize);
+        function canvasResize(){
+            canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        canvasResize();
+        var cx = canvas.width/2-(180*5/2);
+        var cy = canvas.height/2-(35*5/2);
+        class Particle{
+            constructor(){
+                this.arr = [];
+            }
+            init(){
+                for(let i=0;i<pix.data.length/4;i++){
+                     this.arr.push({
+                        x:i%180,
+                        y:i/180,
+                        alpha:pix.data[i*4+3],
+                        mx:Math.random()*canvas.width,
+                        my:Math.random()*canvas.height,
+                        radius:Math.random()*3,
+                        speed:Math.random()*40+40,
+                        color:`rgba(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255},${pix.data[i*4+3]}`
+                     })
+                }
+            }
+            draw(){          
+                this.arr.forEach(item=>{
+                    ctx.beginPath();
+                    ctx.fillStyle = item.color;
+                    ctx.arc(item.mx,item.my,item.radius,0,Math.PI*2,false);
+                    ctx.fill();
+                })
+            }
+            update(){
+                   for(let i=0;i<this.arr.length;i++){
+                       this.arr[i].mx = this.arr[i].mx + ((this.arr[i].x*5+cx)-this.arr[i].mx)/this.arr[i].speed;
+                       this.arr[i].my = this.arr[i].my + ((this.arr[i].y*5+cy)-this.arr[i].my)/this.arr[i].speed;
+                   }
+            }
+        }      
+       const particle = new Particle();
+       particle.init();
+   
+       window.addEventListener('resize',function(){
+           particle.arr = [];  
+           particle.init();
+            cx = canvas.width/2-(180*5/2);
+            cy = canvas.height/2-(35*5/2);
+        })
+
+       function step(){
+        ctx.fillStyle = "rgba(0,0,0,0.1)";
+          ctx.fillRect(0,0,canvas.width,canvas.height);
+          particle.draw(); 
+          particle.update(); 
+         
+          window.requestAnimationFrame(step);
+       }
+       window.requestAnimationFrame(step);
+    </script>
+</body>
+</html>
+
