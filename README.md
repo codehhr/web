@@ -4,6 +4,8 @@
 
 ## 预览
 
+> 代码雨: https://codehhr.github.io/web/coderain/  
+> canvas 文字特效: https://codehhr.github.io/web/canvas-text/  
 > 玻璃上的雨滴: https://codehhr.github.io/web/raindropsontheglass/  
 > 背景渐变: https://codehhr.github.io/web/gradient/  
 > 烟花: https://codehhr.github.io/web/firework/  
