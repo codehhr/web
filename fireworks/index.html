@@ -19,16 +19,18 @@
       }
 
       .bgimg {
-        position: absolute;
-        width: 100%;
-        height: 100%;
+        background-image: url("https://codehhr.coding.net/p/codehhr/d/wallpaper/git/raw/master/dark.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
       }
-
-      .bgimg img {
-        width: 100%;
-        height: 100%;
+      @media screen and (max-width: 500px) {
+        .bgimg {
+          background: url("https://codehhr.coding.net/p/codehhr/d/wallpaper/git/raw/master/dark.jpg")
+            no-repeat -1320px -980px;
+        }
       }
-
       .demo {
         margin: 0 auto;
         width: 100%;
@@ -45,12 +47,7 @@
 
   <body>
     <!-- 背景图 start -->
-    <div class="bgimg">
-      <img
-        src="https://codehhr.coding.net/p/codehhr/d/wallpaper/git/raw/master/dark.jpg"
-        alt=""
-      />
-    </div>
+    <div class="bgimg"></div>
     <!-- 背景图 end -->
 
     <div class="demo"></div>
