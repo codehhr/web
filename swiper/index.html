@@ -2,122 +2,207 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-    <title>简单的轮播图</title>
+    <title>Document</title>
+    <style>
+      /* 轮播图 start */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: #494f5c;
+      }
+      .swiper {
+        position: relative;
+        margin: 200px auto;
+        width: 1200px;
+        height: 220px;
+        /* overflow: hidden; */
+      }
+      .swiper-ul {
+        list-style: none;
+        position: relative;
+        margin: 0 auto;
+        width: 400px;
+        height: inherit;
+      }
+      .swiper-ul li {
+        list-style: none;
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        transition: all 0.6s ease-in-out;
+      }
+      .swiper-ul li img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+      }
+      .swiper-nav {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: inherit;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+      }
+      .swiper-nav > div {
+        margin: 0 20px;
+        width: 80px;
+        height: 10px;
+        background-color: #e6e6e64d;
+        cursor: pointer;
+        transition: all 2s ease-in-out;
+      }
+      .swiper-nav > div:hover {
+        background-color: #e6e6e6bb;
+      }
+      .prev,
+      .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
+      .prev {
+        left: 10px;
+        z-index: 10;
+      }
+      .next {
+        right: 10px;
+        z-index: 10;
+      }
+
+      /* 轮播图 end */
+    </style>
   </head>
   <body>
-    <div class="swiperbox">
-      <ul class="swiper">
-        <li class="swiperitem showing"></li>
-        <li class="swiperitem"></li>
-        <li class="swiperitem"></li>
-        <li class="swiperitem"></li>
-        <li class="swiperitem"></li>
+    <!-- 结构
+      div.swiper 
+          img.prev
+            ul.swiper-ul > li > img[src] 
+          img.next
+    -->
+
+    <!-- 轮播图 start -->
+    <div class="swiper">
+      <img class="prev" src="./images/prev.png" alt="" />
+      <ul class="swiper-ul">
+        <li>
+          <img
+            src="https://codehhr.coding.net/p/codehhr/d/wallpaper/git/raw/master/deer.jpg"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            src="https://codehhr.coding.net/p/codehhr/d/wallpaper/git/raw/master/deer1.jpg"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            src="https://codehhr.coding.net/p/codehhr/d/wallpaper/git/raw/master/deer2.jpg"
+            alt=""
+          />
+        </li>
+        <li>
+          <img
+            src="https://codehhr.coding.net/p/codehhr/d/wallpaper/git/raw/master/deer3.jpg"
+            alt=""
+          />
+        </li>
       </ul>
-      <button class="goprevbtn">
-        <!-- < -->
-      </button>
-      <button class="gonextbtn">></button>
-      <ul class="swiperpoints">
-        <li class="point active" data-pointindex="0"></li>
-        <li class="point" data-pointindex="1"></li>
-        <li class="point" data-pointindex="2"></li>
-        <li class="point" data-pointindex="3"></li>
-        <li class="point" data-pointindex="4"></li>
-      </ul>
+      <img class="next" src="./images/next.png" alt="" />
+      <div class="swiper-nav"></div>
     </div>
+    <!-- 轮播图 end -->
+
     <script>
-      // 获取轮播ul
-      var swiper = document.querySelector(".swiper");
-      // 获取轮播每项
-      var swiperItems = document.querySelectorAll(".swiperitem");
-      // 获取点
-      var points = document.querySelectorAll(".point");
-      // 往上翻页按钮
-      var goPrevBtn = document.querySelector(".goprevbtn");
-      // 往下翻页按钮
-      var goNextBtn = document.querySelector(".gonextbtn");
-      // 索引
-      var index = 0;
-      // 点击定时
-      var time = 0;
+      function swiper() {
+        let width = document.querySelector(".swiper-ul li").clientWidth; // offsetWidth
+        let liIndex = 0;
+        let ul = document.querySelector(".swiper-ul"); // ul tag
+        let liNodeList = document.querySelectorAll(".swiper-ul li"); // li node list
+        let liList = []; // li tag list
 
-      // 展示索引的图片
-      var show = function () {
-        for (let i of swiperItems) {
-          i.classList.remove("showing");
-        }
-        swiperItems[index].classList.add("showing");
-        for (let t of points) {
-          t.classList.remove("active");
-        }
-        points[index].classList.add("active");
-      };
-      // 往上翻页
-      function goPrev() {
-        if (index == 0) {
-          index = 4;
-        } else {
-          index--;
-        }
-        show();
-      }
-      // 往下翻页
-      function goNext() {
-        if (index == 4) {
-          index = 0;
-        } else {
-          index++;
-        }
-        show();
-      }
+        // 开局先启动定时器
+        let timer = setInterval(function () {
+          next();
+        }, 4000);
 
-      // 给上下翻页按钮添加方法
-      goPrevBtn.addEventListener("click", function () {
-        goPrev();
-        time = 0;
-      });
-      goNextBtn.addEventListener("click", function () {
-        goNext();
-        time = 0;
-      });
+        // 鼠标移入 swiper 清除定时器
+        document.querySelector(".swiper").onmouseenter = function () {
+          clearInterval(timer);
+        };
+        // 鼠标移出 swiper 开启定时器
+        document.querySelector(".swiper").onmouseleave = function () {
+          timer = setInterval(next, 4000);
+        };
 
-      // 每个点添加点击事件
-      points.forEach(function (point) {
-        point.addEventListener("click", () => {
-          index = point.dataset.pointindex;
-          show();
-          time = 0;
+        // 把每个 li 放到 liList 数组里
+        liNodeList.forEach(function (value, index) {
+          liList.push(value);
         });
-      });
 
-      // 定时器
-      var interval = null;
+        let prevImg = document.querySelector(".prev"); // 上一张图的指示箭头
+        let nextImg = document.querySelector(".next"); // 下一张图的指示箭头
+        // 点击->上一个
+        prevImg.addEventListener("click", function () {
+          clearInterval(timer);
+          prev();
+        });
 
-      // 默认轮播
-      start();
-      // 当鼠标移入清除定时器
-      swiper.onmouseover = function () {
-        clearInterval(interval);
-      };
-      // 当鼠标移出调用start()继续轮播
-      swiper.onmouseout = function () {
-        if (interval != null) {
-          clearInterval(interval);
-        }
-        start();
-      };
-      // 2.5秒跳到下一张
-      function start() {
-        interval = setInterval(function () {
-          time++;
-          if (time == 25) {
-            goNext();
-            time = 0;
+        // 点击->下一个
+        nextImg.addEventListener("click", function () {
+          clearInterval(timer);
+          next();
+        });
+
+        // 初始化后数组的后三张图片的位置
+        initImgArrPosition();
+
+        // 上一个
+        function prev() {
+          liList.unshift(liList.pop());
+          for (let i = 0; i < liList.length; i++) {
+            liList[i].style.zIndex = i;
+            liList[i].style.transform = "scale(1.0)";
           }
-        }, 100);
+          initImgArrPosition();
+        }
+
+        // 下一个
+        function next() {
+          liList.push(liList.shift());
+          for (let i = 0; i < liList.length; i++) {
+            liList[i].style.zIndex = i;
+            liList[i].style.transform = "scale(1.0)";
+          }
+          initImgArrPosition();
+        }
+
+        // 初始化后数组的后三张图片的位置
+        function initImgArrPosition() {
+          liList[liList.length - 4].style.left = `0`;
+          liList[liList.length - 2].style.transform = "scale(0.8)";
+          liList[liList.length - 4].style.zIndex = "-1";
+          liList[liList.length - 3].style.left = `-${width}px`;
+          liList[liList.length - 2].style.left = "0";
+          liList[liList.length - 2].style.transform = "scale(1.2)";
+          liList[liList.length - 2].style.zIndex = "9";
+          liList[liList.length - 1].style.left = `${width}px`;
+        }
       }
+      swiper();
     </script>
   </body>
 </html>
